@@ -2,8 +2,8 @@ FROM alpine:edge
 
 MAINTAINER fanningert <thomas@fanninger.at>
 
-RUN addgroup -S app \
-    && adduser -S -G app -h /home/app -D app
+RUN addgroup --gid 100 -S app \
+    && adduser --gid 99 -S -G app -h /home/app -D app
 
 RUN apk update && \
 	apk add --no-cache --update bash && \

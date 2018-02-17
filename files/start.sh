@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # Change user and group id
-if [ $aria2UID ]; then
-usermod -i ${aria2UID} app
-fi
-if [ $aria2GID ]; then
-usermod -i ${aria2GID} app
-fi
+#if [ $aria2UID ]; then
+#usermod -i ${aria2UID} app
+#fi
+#if [ $aria2GID ]; then
+#usermod -i ${aria2GID} app
+#fi
 
-RUN chown -R app:app /home/app/conf
-RUN chown -R app:app /home/app/conf-copy
-RUN chown -R app:app /home/app/data
+chown -R app:app /home/app/conf
+chown -R app:app /home/app/conf-copy
+chown -R app:app /home/app/data
 #RUN chown -R app:app /home/app/download
 
 # Create aria2.conf
