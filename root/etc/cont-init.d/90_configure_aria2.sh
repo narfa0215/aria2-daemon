@@ -4,7 +4,7 @@ mkdir -p /config
 mkdir -p /conf
 mkdir -p /download
 
-dockerize -template /app/start.sh:/config/start.sh
+dockerize -template /app/start_aria2.sh:/config/start_aria2.sh
 dockerize -template /app/aria2.conf:/config/aria2.conf
 dockerize -no-overwrite -template /app/aria2_ext.conf:/conf/aria2_ext.conf
 dockerize -no-overwrite -template /app/on-bt-download-complete.sh:/conf/on-bt-download-complete.sh
@@ -20,7 +20,7 @@ if [ ! -f /conf/aria2.session ]; then
 	touch /conf/aria2.session
 fi
 
-chmod +x /config/start.sh
+chmod +x /config/start_aria2.sh
 chmod +x /conf/on-bt-download-complete.sh
 chmod +x /conf/on-download-complete.sh
 chmod +x /conf/on-download-error.sh
