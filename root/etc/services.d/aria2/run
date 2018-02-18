@@ -2,9 +2,9 @@
 
 echo "Starting Aria2"
 
-if [ ! -f /config/aria2.session ]; then
-	touch /config/aria2.session
+if [ ! -f /conf/aria2.session ]; then
+	touch /conf/aria2.session
 fi
 
 export HOME="~app"
-exec s6-setuidgid app "aria2c --conf-path=/config_int/aria2.conf"
+exec s6-setuidgid app "aria2c --conf-path=/config/aria2.conf"

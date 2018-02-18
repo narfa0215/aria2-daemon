@@ -1,27 +1,30 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p /config_int
 mkdir -p /config
+mkdir -p /conf
+mkdir -p /download
 
-dockerize -template /app/aria2.conf /config_int/aria2.conf
-dockerize -template /app/on-bt-download-complete.sh /config/on-bt-download-complete.sh
-dockerize -template /app/on-download-complete.sh /config/on-download-complete.sh
-dockerize -template /app/on-download-error.sh /config/on-download-error.sh
-dockerize -template /app/on-download-pause.sh /config/on-download-pause.sh
-dockerize -template /app/on-download-start.sh /config/on-download-start.sh
-dockerize -template /app/on-download-stop.sh /config/on-download-stop.sh
+dockerize -template /app/aria2.conf /config/aria2.conf
+dockerize -no-overwrite -template /app/aria2_ext.conf /conf/aria2_ext.conf
+dockerize -no-overwrite -template /app/on-bt-download-complete.sh /conf/on-bt-download-complete.sh
+dockerize -no-overwrite -template /app/on-download-complete.sh /conf/on-download-complete.sh
+dockerize -no-overwrite -template /app/on-download-error.sh /conf/on-download-error.sh
+dockerize -no-overwrite -template /app/on-download-pause.sh /conf/on-download-pause.sh
+dockerize -no-overwrite -template /app/on-download-start.sh /conf/on-download-start.sh
+dockerize -no-overwrite -template /app/on-download-stop.sh /conf/on-download-stop.sh
 
-mkdir -p /home/app/download
+cat /conf/aria2_ext.conf >> /config/aria2.conf
 
-chmod +x /config/on-bt-download-complete.sh
-chmod +x /config/on-download-complete.sh
-chmod +x /config/on-download-error.sh
-chmod +x /config/on-download-pause.sh
-chmod +x /config/on-download-start.sh
-chmod +x /config/on-download-stop.sh
+chmod +x /conf/on-bt-download-complete.sh
+chmod +x /conf/on-download-complete.sh
+chmod +x /conf/on-download-error.sh
+chmod +x /conf/on-download-pause.sh
+chmod +x /conf/on-download-start.sh
+chmod +x /conf/on-download-stop.sh
 
-chown -R app:users /config_int
+chown -R app:users /download
 chown -R app:users /config
+chown -R app:users /conf
 
-cat /config_int/aria2.conf
+cat /config/aria2.conf
 
