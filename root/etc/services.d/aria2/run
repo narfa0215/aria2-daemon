@@ -1,4 +1,10 @@
 #!/usr/bin/with-contenv bash
 
+echo "Starting Aria2"
+
+if [ ! -f /app/home/aria2.session ]; then
+	touch /app/home/aria2.session
+fi
+
 export HOME="~app"
 exec s6-setuidgid app "aria2c --conf-path=/home/app/aria2.conf"
