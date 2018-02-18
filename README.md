@@ -1,10 +1,6 @@
-Aria2 with webui for unRaid
+Aria2 daemon
 ---
-Only 11Mb. Inspired by XUJINKAI.  
-
-Edit config file out of the image.  
-Move file completed to another folder.  
-(Tasks that contains more than one files will not be moved.)  
+Only 23Mb. Inspired by XUJINKAI.  
 
 ### Install
 I. replace **/DOWNLOAD_DIR** and **/CONFIG_DIR** for save data, and **YOUR_SECRET_CODE** for security. Run command below  
