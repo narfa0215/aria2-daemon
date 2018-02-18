@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-echo "Starting Aria2"
+#echo "Starting Aria2"
 export HOME="~app"
 #exec s6-setuidgid app "aria2c --conf-path=/config/aria2.conf"
