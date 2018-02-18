@@ -15,8 +15,8 @@ sudo docker run -d \
 -v /CONFIG_DIR:/conf \
 -v /DOWNLOAD_DIR:=/download \
 -e SECRET=YOUR_SECRET_CODE \
--e PGID=100 \
--e PUID=1001 \
+-e PGID=911 \
+-e PUID=911 \
 fanningert/aria2-daemon
 ```
 
