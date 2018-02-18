@@ -10,6 +10,6 @@ ADD root/ /
 
 RUN chmod -v +x /etc/services.d/*/run /etc/cont-init.d/*
 
-VOLUME ["/home/app/download"]
-VOLUME ["/etc/aria2/conf"]
+VOLUME ["/download"]
+VOLUME ["/conf"]
 EXPOSE 6800
