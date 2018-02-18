@@ -1,6 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-rm -f /etc/aria2/aria2.conf
 dockerize -template /app/aria2.conf /app/home/aria2.conf
 dockerize -template /app/on-bt-download-complete.sh /app/home/config/on-bt-download-complete.sh
 dockerize -template /app/on-download-complete.sh /app/home/config/on-download-complete.sh
@@ -10,12 +9,6 @@ dockerize -template /app/on-download-start.sh /app/home/config/on-download-start
 dockerize -template /app/on-download-stop.sh /app/home/config/on-download-stop.sh
 
 # Create aria2.conf
-if [ $aria2Secret ]; then
-	echo "rpc-secret=${aria2Secret}" >> /app/home/aria2.conf
-fi
-if [ $aria2LogLevel ]; then
-	echo "log-level=${aria2LogLevel}" >> /conf/aria2.conf
-fi
 if [ $aria2MaxConcurrentDownloads ]; then
 	echo "max-concurrent-downloads=${aria2MaxConcurrentDownloads}" >> /app/home/aria2.conf
 fi
@@ -84,19 +77,19 @@ cat /app/home/config/aria2_ext.conf >> /app/home/aria2.conf
 if [ ! -f /app/home/config/on-bt-download-complete.sh ]; then
 	cp /app/on-bt-download-complete.sh /app/home/config/on-bt-download-complete.sh
 fi
-if [ ! -f /app/home/on-download-complete.sh ]; then
+if [ ! -f /app/home/config/on-download-complete.sh ]; then
 	cp /app/on-download-complete.sh /app/home/config/on-download-complete.sh
 fi
-if [ ! -f /app/home/on-download-error.sh ]; then
+if [ ! -f /app/home/config/on-download-error.sh ]; then
 	cp /app/on-download-error.sh /app/home/config/on-download-error.sh
 fi
-if [ ! -f /app/home/on-download-pause.sh ]; then
+if [ ! -f /app/home/config/on-download-pause.sh ]; then
 	cp /app/on-download-pause.sh /app/home/config/on-download-pause.sh
 fi
-if [ ! -f /app/home/on-download-start.sh ]; then
+if [ ! -f /app/home/config/on-download-start.sh ]; then
 	cp /app/on-download-start.sh /app/home/config/on-download-start.sh
 fi
-if [ ! -f /app/home/on-download-stop.sh ]; then
+if [ ! -f /app/home/config/on-download-stop.sh ]; then
 	cp /app/on-download-stop.sh /app/home/config/on-download-stop.sh
 fi
 
@@ -105,7 +98,6 @@ if [ ! -f /app/home/aria2.session ]; then
 fi
 
 mkdir -p /home/app/download
-chown -R app:app /home/app
 
 chmod +x /etc/aria2/config/on-bt-download-complete.sh
 chmod +x /etc/aria2/config/on-download-complete.sh
