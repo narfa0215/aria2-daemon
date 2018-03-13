@@ -11,4 +11,4 @@ while read p; do
    	    ;;
          esac
    done
-done <rss_feeds.txt
+done </conf/rss_feeds.txt
