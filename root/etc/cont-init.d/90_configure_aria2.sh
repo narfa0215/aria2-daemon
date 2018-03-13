@@ -14,6 +14,10 @@ dockerize -no-overwrite -template /app/on-download-pause.sh:/conf/on-download-pa
 dockerize -no-overwrite -template /app/on-download-start.sh:/conf/on-download-start.sh
 dockerize -no-overwrite -template /app/on-download-stop.sh:/conf/on-download-stop.sh
 
+dockerize -template /app/aria2rpc.ruby:/config/aria2rpc.ruby
+dockerize -template /app/rss_download.sh:/config/rss_download.sh
+dockerize -no-overwrite -template /app/rss_feeds.txt:/conf/rss_feeds.txt
+
 cat /conf/aria2_ext.conf >> /config/aria2.conf
 
 if [ ! -f /conf/aria2.session ]; then
@@ -27,6 +31,9 @@ chmod +x /conf/on-download-error.sh
 chmod +x /conf/on-download-pause.sh
 chmod +x /conf/on-download-start.sh
 chmod +x /conf/on-download-stop.sh
+
+chmod +x /config/aria2rpc.ruby
+chmod +x /config/rss_download.sh
 
 chown -R app:users /download
 chown -R app:users /config
