@@ -10,6 +10,7 @@ RUN apk --update add \
   ca-certificates \
   ruby \
   ruby-bundler \
+  ruby-xmlrpc \
   ruby-dev && \
   rm -fr /usr/share/ri
 

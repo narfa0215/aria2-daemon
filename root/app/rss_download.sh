@@ -1,14 +1,8 @@
 #!/bin/sh
-xmlgetnext () {
-   local IFS='>'
-   read -d '<' TAG VALUE
-}
 while read p; do
-   curl $p | while xmlgetnext ; do
-      case $TAG in
-         'link')
-   	    ruby aria2rpc --server 127.0.0.1 --port 6800 --secret {{ default .Env.aria2Secret "YOUR_SECRET_CODE" }} addUri $VALUE
-   	    ;;
-         esac
+   curl $p | grep -o '<link>.*torrent</link>' | sed -e 's/<[^>]*>//g' | while read line
+   do
+     #echo $line
+     ruby /config/aria2rpc.ruby --server 127.0.0.1 --port 6800 --secret YOUR_SECRET_CODE addUri $line
    done
 done </conf/rss_feeds.txt
