@@ -16,6 +16,7 @@ dockerize -no-overwrite -template /app/on-download-stop.sh:/conf/on-download-sto
 
 dockerize -template /app/aria2rpc.ruby:/config/aria2rpc.ruby
 dockerize -template /app/rss_download.sh:/config/rss_download.sh
+dockerize -template /app/rss_download.sh:/config/rss_download_wget.sh
 dockerize -no-overwrite -template /app/rss_feeds.txt:/conf/rss_feeds.txt
 
 cat /conf/aria2_ext.conf >> /config/aria2.conf
@@ -34,6 +35,7 @@ chmod +x /conf/on-download-stop.sh
 
 chmod +x /config/aria2rpc.ruby
 chmod +x /config/rss_download.sh
+chmod +x /config/rss_download_wget.sh
 
 chown -R app:users /download
 chown -R app:users /config
