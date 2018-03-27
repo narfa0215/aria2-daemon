@@ -6,7 +6,7 @@ if [ ! -e "$file" ] ; then
 fi
 
 while read p; do
-   curl --connect-timeout 5 --max-time 10 --retry 999 --retry-max-time 0 retry-delay 5 $p | grep -o '<link>.*torrent</link>' | sed -e 's/<[^>]*>//g' | while read line
+   curl $p | grep -o '<link>.*torrent</link>' | sed -e 's/<[^>]*>//g' | while read line
    do
      #echo $line
      if grep -Fxq "$line" $file ; then
