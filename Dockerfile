@@ -16,7 +16,7 @@ RUN apk --update add \
 
 ADD root/ /
 
-RUN chmod -v +x /etc/services.d/*/run /etc/cont-init.d/*
+RUN chmod -v +x /etc/services.d/*/run /etc/cont-init.d/* /usr/bin/aria2c
 
 VOLUME ["/download"]
 VOLUME ["/conf"]
